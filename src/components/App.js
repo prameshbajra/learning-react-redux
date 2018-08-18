@@ -39,4 +39,10 @@ const mapActionToProps = (dispatch, props) => {
     }, dispatch)
 }
 
+// If merging of props is needed then use :
+// const mergeProps = (propsFromState, propsFromDispatch, normalProps) => {
+//     somethings here!!!
+//     return something
+// }
+
 export default connect(mapStateToProps, mapActionToProps)(App);
