@@ -4,15 +4,20 @@ import './css/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { productsReducer } from './reducers/product-reducers';
 import { usersReducer } from './reducers/user-reducers';
 
+const allStoreEnhancers = compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension && window.devToolsExtension());
+
 const store = createStore(combineReducers({
     products: productsReducer,
     users: usersReducer
-}), window.devToolsExtension && window.devToolsExtension());
+}), allStoreEnhancers);
 
 ReactDOM.render(
     <Provider store={store}>

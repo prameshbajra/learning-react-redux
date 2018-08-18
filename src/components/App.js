@@ -32,6 +32,7 @@ const mapStateToProps = (state, props) => {
     }
 }
 
+// Generally this is an object ...
 const mapActionToProps = (dispatch, props) => {
     return bindActionCreators({
         onUpdateUser: updateUser,
@@ -44,5 +45,6 @@ const mapActionToProps = (dispatch, props) => {
 //     somethings here!!!
 //     return something
 // }
+// ani pass garrney mergeProps as last paraneter in first () in export connect ...
 
 export default connect(mapStateToProps, mapActionToProps)(App);
