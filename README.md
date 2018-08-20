@@ -1,4 +1,4 @@
-# React + Redux (Basics)
+# React + Redux (Boilerplate)
 
 Unless you want to see how I pass time,
 
