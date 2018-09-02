@@ -1,10 +1,16 @@
 import React from 'react';
 
-const About = () => {
+const onClickHandler = (param_id, props) => {
+    props.history.push(`/Param/${param_id}`)
+}
+const About = (props) => {
     return (
         <div>
             <h1>About US</h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus suscipit, asperiores quisquam eum ducimus quasi vitae minima enim nostrum dolorem officiis, natus ipsum, iure voluptatem hic. Fugit dolore adipisci ipsa!
+            <button onClick={() => onClickHandler(1, props)}>One</button>
+            <button onClick={() => onClickHandler(2, props)}>Two</button>
+            <button onClick={() => onClickHandler(3, props)}>Three</button>
+            <button onClick={() => onClickHandler(4, props)}>Four</button>
         </div>
     );
 }

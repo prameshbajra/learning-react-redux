@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Param from './components/Param';
 
 class App extends Component {
     render() {
@@ -16,6 +17,7 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route path="/About" component={About} />
                     <Route path="/Contact" component={Contact} />
+                    <Route path="/Param/:param_id" component={Param} />
                 </div>
             </BrowserRouter>
         );

@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+import { Link, NavLink, withRouter } from 'react-router-dom';
+// We use withRouter where because by default we do not get react router features in 
+// Navbar as it is not under <Routes> ...
+
+const NavBar = (props) => {
     return (
         <div>
             <Link to="/">Home</Link>
@@ -11,4 +14,4 @@ const NavBar = () => {
     );
 }
 
-export default NavBar;
+export default withRouter(NavBar);
