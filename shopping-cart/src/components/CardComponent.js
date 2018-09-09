@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Skeleton, Switch, Card, Icon, Avatar } from 'antd';
+import { Skeleton, Card, Icon, Avatar } from 'antd';
 
 const { Meta } = Card;
 
@@ -8,8 +8,8 @@ class CardComponent extends Component {
         loading: false,
     }
 
-    onChange = (checked) => {
-        this.setState({ loading: !checked });
+    onChange = () => {
+        this.setState({ loading: !this.state.loading });
     }
 
     render() {
@@ -19,13 +19,16 @@ class CardComponent extends Component {
             <div>
                 <Card
                     style={{ width: 300, marginTop: 16 }}
-                    actions={[<Icon type="plus-circle" />, <Icon type="close-circle" />]}
+                    actions={[
+                        <div><Icon type="plus-circle" /> Add Item</div>,
+                        <div><Icon type="close-circle" /> Remove Item</div>
+                    ]}
                 >
                     <Skeleton loading={loading} avatar active>
                         <Meta
-                            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                            title="Card title"
-                            description="This is the description"
+                            avatar={<Avatar src="https://prameshbajra.github.io/static/assets/img/landing/pramesh.png" />}
+                            title="Super cool Name Here ..."
+                            description="Some super cool item description ... Dead Booth ... Super cool from ant design"
                         />
                     </Skeleton>
                 </Card>

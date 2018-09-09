@@ -1,8 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import { NavLink } from 'react-router-dom';
 
 class NavigationComponent extends React.Component {
     state = {
@@ -10,7 +8,6 @@ class NavigationComponent extends React.Component {
     }
 
     handleClick = (e) => {
-        console.log('click ', e);
         this.setState({
             current: e.key,
         });
@@ -22,18 +19,24 @@ class NavigationComponent extends React.Component {
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current]}
                 mode="horizontal"
-                theme="dark"
             >
                 <Menu.Item key="bank">
-                    <Icon type="bank" />
-                    Home
+                    <NavLink to="/">
+                        <Icon type="bank" />
+                        Home
+                     </NavLink>
                 </Menu.Item>
                 <Menu.Item key="shopping">
-                    <Icon type="shopping" />
-                    My Cart
+                    <NavLink to="/cart">
+                        <Icon type="shopping" />
+                        My Cart
+                       </NavLink>
                 </Menu.Item>
                 <Menu.Item key="alipay" style={{ float: 'right' }}>
-                    <a href="http://prameshbajra.github.io" target="_blank" rel="noopener noreferrer">About Me</a>
+                    <a href="http://prameshbajra.github.io" target="_blank" rel="noopener noreferrer">
+                        <Icon type="idcard" />
+                        About Me
+                    </a>
                 </Menu.Item>
             </Menu>
         );
