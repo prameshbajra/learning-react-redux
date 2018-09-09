@@ -4,17 +4,22 @@ import { Skeleton, Card, Icon, Avatar } from 'antd';
 const { Meta } = Card;
 
 class CardComponent extends Component {
-    state = {
-        loading: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+        }
     }
 
-    onChange = () => {
-        this.setState({ loading: !this.state.loading });
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ loading: !this.state.loading });
+        }, 3000)
     }
+
 
     render() {
         const { loading } = this.state;
-
         return (
             <div>
                 <Card
@@ -28,9 +33,12 @@ class CardComponent extends Component {
                 >
                     <Skeleton loading={loading} avatar active>
                         <Meta
-                            avatar={<Avatar src="https://prameshbajra.github.io/static/assets/img/landing/pramesh.png" />}
-                            title={this.props.item.item_name}
-                            description={this.props.item.item_description}
+                            title={this.props.item.name}
+                            description={
+                                this.props.item.description.length > 160 ?
+                                    this.props.item.description.substring(0, 160) + "..." :
+                                    this.props.item.description
+                            }
                         />
                     </Skeleton>
                 </Card>

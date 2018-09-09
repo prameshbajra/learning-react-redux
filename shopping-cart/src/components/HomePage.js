@@ -1,40 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Row, Col } from 'antd';
 import { connect } from 'react-redux';
+import data from '../seeds/products.json';
 
 import CardComponent from './CardComponent';
+import { add_item, remove_item } from '../config/Actions';
 const { Content } = Layout;
 
-class HomePage extends Component {
-    state = {
-        items: [
-            {
-                item_name: "Pramesh",
-                item_price: 10,
-                item_description: "This is a simple redux application."
-            },
-            {
-                item_name: "Susis",
-                item_price: 100,
-                item_description: "This is another simple redux application."
-            }
-        ]
-    }
-    render() {
-        return (
-            <div>
-                <Content style={{ padding: '0px 50px' }}>
-                    <Row gutter={16}>
-                        {this.state.items.map((item) =>
-                            <Col span={6} key={item.item_name}>
-                                <CardComponent item={item} addToCart={this.props.addToCart(item)} />
-                            </Col>
-                        )}
-                    </Row>
-                </Content>
-            </div>
-        );
-    }
+const HomePage = (props) => {
+    return (
+        <div>
+            <Content style={{ padding: '0px 50px' }}>
+                <Row gutter={16}>
+                    {data.products.map((item) =>
+                        <Col span={6} key={item.id}>
+                            <CardComponent item={item} addToCart={props.addToCart} />
+                        </Col>
+                    )}
+                </Row>
+            </Content>
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => {
@@ -46,10 +32,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (item) => {
-            dispatch({ type: 'add_item', item: item })
+            dispatch(add_item(item))
         },
         removeFromCart: (item) => {
-            dispatch({ type: 'remove_item', item: item })
+            dispatch(remove_item(item))
         }
     }
 }
