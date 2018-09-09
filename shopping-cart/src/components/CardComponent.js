@@ -18,17 +18,19 @@ class CardComponent extends Component {
         return (
             <div>
                 <Card
-                    style={{ width: 300, marginTop: 16 }}
+                    style={{ width: 300, marginTop: 50 }}
+                    cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
                     actions={[
-                        <div><Icon type="plus-circle" /> Add Item</div>,
-                        <div><Icon type="close-circle" /> Remove Item</div>
+                        <div onClick={() => this.props.addToCart(this.props.item)} >
+                            <Icon type="plus-circle" /> Add item to cart
+                        </div>
                     ]}
                 >
                     <Skeleton loading={loading} avatar active>
                         <Meta
                             avatar={<Avatar src="https://prameshbajra.github.io/static/assets/img/landing/pramesh.png" />}
-                            title="Super cool Name Here ..."
-                            description="Some super cool item description ... Dead Booth ... Super cool from ant design"
+                            title={this.props.item.item_name}
+                            description={this.props.item.item_description}
                         />
                     </Skeleton>
                 </Card>
